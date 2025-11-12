@@ -3,10 +3,10 @@
   "version": "1.0.0",
   "description": "Finance Manager - Full Stack Application",
   "scripts": {
-    "start": "cd Server && npm start",
+    "start": "node Server/app.js",
     "install-server": "cd Server && npm install",
     "install-client": "cd Client && npm install",
-    "build": "cd Server && npm install"
+    "build": "cd Server && npm install && cd .."
   },
   "keywords": ["finance", "expense-tracker"],
   "author": "",

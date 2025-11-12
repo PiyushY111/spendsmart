@@ -29,13 +29,13 @@ app.get("/", (req, res) => {
   res.send("✅ FinManager Server is running and connected to MongoDB!");
 });
 
-// // Start server
-// app.listen(port, () => {
-//   console.log(`🚀 Server is listening on http://localhost:${port}`);
-// });
+// Export for Vercel serverless
+export default app;
 
-// Start server
-const PORT = process.env.PORT || 4000;
-app.listen(PORT, () => {
-  console.log(`🚀 Server running on port ${PORT}`);
-});
+// Start server (only for local development)
+if (process.env.NODE_ENV !== 'production') {
+  const PORT = process.env.PORT || 4000;
+  app.listen(PORT, () => {
+    console.log(`🚀 Server running on port ${PORT}`);
+  });
+}
