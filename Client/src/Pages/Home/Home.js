@@ -140,6 +140,7 @@ const Home = () => {
 
 
   useEffect(() => {
+    if (!cUser) return;
 
     const fetchAllTransactions = async () => {
       try {
@@ -164,7 +165,7 @@ const Home = () => {
     };
 
     fetchAllTransactions();
-  }, [refresh, frequency, endDate, type, startDate]);
+  }, [refresh, frequency, endDate, type, startDate, cUser]);
 
   const handleTableClick = (e) => {
     setView("table");
