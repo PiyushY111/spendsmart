@@ -2,9 +2,9 @@ import express from "express";
 import cors from "cors";
 import bodyParser from "body-parser";
 import dotenv from "dotenv";
-import { connectDB } from "./DB/Database.js";
-import transactionRoutes from "./Routers/Transactions.js";
-import userRoutes from "./Routers/userRouter.js";
+import { connectDB } from "../DB/Database.js";
+import transactionRoutes from "../Routers/Transactions.js";
+import userRoutes from "../Routers/userRouter.js";
 
 // Load environment variables
 dotenv.config();
@@ -30,16 +30,15 @@ app.get("/health", (req, res) => {
   res.json({ status: "OK", message: "Server is healthy" });
 });
 
-// Export app for testing or serverless
-export default app;
+// Connect to MongoDB once for serverless
+let isConnected = false;
 
-// Start server (only for local development)
-if (process.env.NODE_ENV !== 'production') {
-  // Connect to MongoDB
-  connectDB();
-  
-  const PORT = process.env.PORT || 4000;
-  app.listen(PORT, () => {
-    console.log(`🚀 Server running on port ${PORT}`);
-  });
-}
+const handler = async (req, res) => {
+  if (!isConnected) {
+    await connectDB();
+    isConnected = true;
+  }
+  return app(req, res);
+};
+
+export default handler;
