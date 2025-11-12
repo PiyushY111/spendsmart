@@ -1,0 +1,23 @@
+# Render.com deployment configuration for backend
+
+services:
+  # Backend Service
+  - type: web
+    name: finance-manager-backend
+    runtime: node
+    env: node
+    region: oregon
+    plan: free
+    rootDir: Server
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 4000
+      - key: MONGO_URI
+        sync: false  # Set this in Render dashboard
+      - key: JWT_SECRET
+        generateValue: true  # Auto-generate secure secret
+    healthCheckPath: /
