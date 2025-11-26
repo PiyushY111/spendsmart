@@ -13,7 +13,7 @@ const initialState = {
     message: '',
 };
 
-const API_URL = '/api/auth/';
+const API_URL = 'https://spendsmart-1-b33f.onrender.com/api/auth/';
 
 export const register = createAsyncThunk('auth/register', async (user, thunkAPI) => {
     try {

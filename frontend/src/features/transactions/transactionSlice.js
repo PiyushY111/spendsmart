@@ -11,7 +11,7 @@ const initialState = {
     message: '',
 };
 
-const API_URL = '/api/transactions/';
+const API_URL = 'https://spendsmart-1-b33f.onrender.com/api/transactions/';
 
 // Helper function to get the authorization header
 const getConfig = (thunkAPI) => {

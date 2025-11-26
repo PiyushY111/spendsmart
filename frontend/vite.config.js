@@ -8,12 +8,12 @@ export default defineConfig({
   plugins: [react()],
   server: {
     // CRITICAL: The proxy configuration block
-    proxy: {
-      "/api": {
-        target: "https://spendsmart-1-b33f.onrender.com", // <-- Updated to port 8080
-        changeOrigin: true,
-        secure: false,
-      },
-    },
+    // proxy: {
+    //   "/api": {
+    //     target: "https://spendsmart-1-b33f.onrender.com", // <-- Updated to port 8080
+    //     changeOrigin: true,
+    //     secure: false,
+    //   },
+    // },
   },
 });
