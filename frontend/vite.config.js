@@ -10,7 +10,7 @@ export default defineConfig({
     // CRITICAL: The proxy configuration block
     proxy: {
       "/api": {
-        target: "http://localhost:8080", // <-- Updated to port 8080
+        target: "https://spendsmart-1-b33f.onrender.com", // <-- Updated to port 8080
         changeOrigin: true,
         secure: false,
       },
